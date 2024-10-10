@@ -3,7 +3,7 @@ import { simplifiedProduct } from "../interface"
 import { client } from "../lib/sanity"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
-
+  
 async function getData(category:string) {
     const query = `*[_type == "product" && category->name == "${category}"]{
   _id,
@@ -22,9 +22,9 @@ export default async function CategoryPage({params}: {params:{category:string}})
     const data: simplifiedProduct[] = await getData(params.category)
     return (
         <div className='bg-white'>
-        <div className='mx-auto max-w-2xl px-4 py-16 sm:py-24 lg:max-w-7xl lg:px-8'>
+        <div className='mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-8'>
             <div className='flex justify-between items-center'>
-                <h2 className='text-2xl font-bold tracking-tight text-gray-900'>Our Newest Product</h2>
+                <h2 className='text-2xl font-bold tracking-tight text-gray-900'>Our Product for {params.category}</h2>
                 <Link  className='text-primary flex items-center gap-x-1' href='/all'>
                 See all <ArrowRight />
                 </Link>
